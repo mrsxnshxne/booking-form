@@ -15,7 +15,6 @@ const defaultFormCase = (
     "<div class=\"flex justify-between items-center\">\n" +
     "                        <h2 class=\"font-bold\">Réservation</h2>\n" +
     "                        <button\n" +
-    "                                %booking_delete_status%\n" +
     "                                type=\"button\"\n" +
     "                                class=\"bg-red-500 text-white text-sm font-semibold py-2 px-4 rounded-lg disabled:opacity-50 remove-booking\"\n" +
     "                        >\n" +
@@ -55,8 +54,13 @@ const generateDateSelector = (dateList) => {
 }
 
 const generateFormCase = (isRemovable = false) => {
-    return defaultFormCase
-        .replace('%booking_delete_status%', isRemovable ? "" : "disabled");
+    const formCase = document.createElement('div');
+
+    formCase.classList.add('w-full', 'bg-purple-100', 'border', 'border-purple-200', 'p-4', 'rounded-lg', 'form-case');
+    formCase.innerHTML = defaultFormCase.trim();
+    formCase.querySelector(".remove-booking").disabled = !isRemovable;
+
+    return formCase;
 }
 
 const calculateUsedDates = () => {
@@ -67,10 +71,7 @@ const calculateUsedDates = () => {
 }
 
 const addFormCase = (isRemovable = false) => {
-    const formCase = document.createElement('div');
-
-    formCase.classList.add('w-full', 'bg-purple-100', 'border', 'border-purple-200', 'p-4', 'rounded-lg', 'form-case');
-    formCase.innerHTML = generateFormCase(isRemovable);
+    const formCase = generateFormCase(isRemovable);
 
     const dateSelector = formCase.querySelector('.date-selector');
     generateDateSelector(calculateUsedDates()).forEach((option) => {
@@ -107,7 +108,7 @@ const processDateSelectorRefresh = () => {
 // Events
 
 document.addEventListener("DOMContentLoaded", () => {
-    addFormCase();
+    addFormCase(false);
 })
 
 addBookingButton.addEventListener('click', () => {
