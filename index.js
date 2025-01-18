@@ -3,6 +3,7 @@
 
 const addBookingButton = document.querySelector('#add-booking');
 const formContainer = document.querySelector('#form-container');
+const submitButton = document.querySelector("#submit-button");
 
 const dates = [
     "2025-01-07",
@@ -104,11 +105,30 @@ const processDateSelectorRefresh = () => {
     })
 }
 
+const isFormSubmittable = () => {
+    const dateSelectors = document.querySelectorAll(".date-selector");
+
+    let isSubmittable = true;
+
+    dateSelectors.forEach((dateSelector) => {
+        if (dateSelector.value === "") {
+            isSubmittable = false;
+        }
+    });
+
+    return isSubmittable;
+}
+
+const processFormSubmittableCheck = () => {
+    submitButton.disabled = !isFormSubmittable();
+}
+
 
 // Events
 
 document.addEventListener("DOMContentLoaded", () => {
     addFormCase(false);
+    processFormSubmittableCheck();
 })
 
 addBookingButton.addEventListener('click', () => {
@@ -116,7 +136,9 @@ addBookingButton.addEventListener('click', () => {
         return;
     }
     addFormCase(true);
+    processFormSubmittableCheck();
 
+    // after adding formCase, re-evaluating ability to add new formCase
     if (formContainer.children.length >= dates.length) {
         addBookingButton.disabled = true;
     }
@@ -125,6 +147,7 @@ addBookingButton.addEventListener('click', () => {
 document.addEventListener('change', (e) => {
     if (e.target.classList.contains('date-selector')) {
         processDateSelectorRefresh();
+        processFormSubmittableCheck();
     }
 });
 
@@ -132,6 +155,7 @@ document.addEventListener('click', (e) => {
     if (e.target.classList.contains('remove-booking')) {
         e.target.parentElement.parentElement.remove();
         processDateSelectorRefresh();
+        processFormSubmittableCheck();
     }
 
     if (formContainer.children.length < dates.length) {
