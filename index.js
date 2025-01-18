@@ -2,8 +2,6 @@
 // Variables
 
 const addBookingButton = document.querySelector('#add-booking');
-
-const form = document.querySelector('form');
 const formContainer = document.querySelector('#form-container');
 
 const dates = [
@@ -117,6 +115,10 @@ addBookingButton.addEventListener('click', () => {
         return;
     }
     addFormCase(true);
+
+    if (formContainer.children.length >= dates.length) {
+        addBookingButton.disabled = true;
+    }
 });
 
 document.addEventListener('change', (e) => {
@@ -129,5 +131,9 @@ document.addEventListener('click', (e) => {
     if (e.target.classList.contains('remove-booking')) {
         e.target.parentElement.parentElement.remove();
         processDateSelectorRefresh();
+    }
+
+    if (formContainer.children.length < dates.length) {
+        addBookingButton.disabled = false;
     }
 });
