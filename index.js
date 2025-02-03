@@ -14,32 +14,33 @@ const dates = [
 
 const defaultFormCase = (
     "<div class=\"flex justify-between items-center\">\n" +
-    "                        <h2 class=\"font-bold\">Réservation</h2>\n" +
-    "                        <button\n" +
-    "                                type=\"button\"\n" +
-    "                                class=\"bg-red-500 text-white text-sm font-semibold py-2 px-4 rounded-lg disabled:opacity-50 remove-booking\"\n" +
-    "                        >\n" +
-    "                            Supprimer\n" +
-    "                        </button>\n" +
-    "                    </div>\n" +
+    "   <h2 class=\"font-bold\">Réservation</h2>\n" +
+    "   <button\n" +
+    "       type=\"button\"\n" +
+    "       class=\"bg-red-500 text-white text-sm font-semibold py-2 px-4 rounded-lg disabled:opacity-50 remove-booking\"\n" +
+    "   >\n" +
+    "       Supprimer\n" +
+    "   </button>\n" +
+    "   </div>\n" +
     "\n" +
-    "                    <hr class=\"mt-4 border-purple-500\">\n" +
+    "   <hr class=\"mt-4 border-purple-500\">\n" +
     "\n" +
-    "                    <p class=\"text-purple-800 text-sm font-semibold mt-4\">Date de réservation</p>\n" +
-    "                    <select class=\"w-full border border-purple-800 p-2 rounded-lg date-selector\">\n" +
-    "                        <option value=\"\" disabled selected>Choisir une date</option>\n" +
-    "                    </select>\n" +
+    "   <p class=\"text-purple-800 text-sm font-semibold mt-4\">Date de réservation</p>\n" +
+    "   <select class=\"w-full border border-purple-800 p-2 rounded-lg date-selector\">\n" +
+    "       <option value=\"\" disabled selected>Choisir une date</option>\n" +
+    "   </select>\n" +
     "\n" +
-    "                    <p class=\"text-purple-800 text-sm font-semibold mt-2\">Nombre de places</p>\n" +
-    "                    <input\n" +
-    "                        type=\"number\"\n" +
-    "                        class=\"w-full border border-purple-800 p-2 rounded-lg seat-input\"\n" +
-    "                        placeholder=\"Nombre de places\"\n" +
-    "                        min=\"1\"\n" +
-    "                        max=\"10\"\n" +
-    "                        value=\"2\"\n" +
-    "                    >\n" +
-    "                </div>"
+    "   <p class=\"text-purple-800 text-sm font-semibold mt-2\">Nombre de places</p>\n" +
+    "   <input\n" +
+    "       type=\"number\"\n" +
+    "       class=\"w-full border border-purple-800 p-2 rounded-lg seat-input\"\n" +
+    "       placeholder=\"Nombre de places\"\n" +
+    "       min=\"1\"\n" +
+    "       max=\"10\"\n" +
+    "       value=\"2\"\n" +
+    "       required" +
+    "   >\n" +
+    "</div>"
 );
 
 
